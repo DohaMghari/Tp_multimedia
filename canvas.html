@@ -10,6 +10,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+
          function AfficherMasquer()
         {
         divInfo = document.getElementById('divacacher');
@@ -33,21 +34,16 @@
 	
 	}
 
+
 	function clone(){
 
 		var vid = document.getElementById('sourcevid');
 		var canvas1 = document.getElementById('cvs').getContext('2d');
 		canvas1.drawImage(vid, 0,0, 300,300);
-		var base64=document.getElementById('cvs').toDataURL("image/png");
-        var link = document.createElement('a');
-        link.href = base64;
-        link.download = "image.png";
-
-        link.click();
+	
 
   	//l'image au format base 64
-		document.getElementById('tar').value='';
-		document.getElementById('tar').value=base64;
+	
         
 	}
     function download_image(){
@@ -60,8 +56,12 @@
 
 
 }   
-	window.onload = init;
-  
+
+
+ 
+    window.onload = init;
+
+
 	</script>
 	
 </head>
@@ -72,9 +72,12 @@
          <div id="divacacher" style="display:none;">
         <video id="sourcevid"   height='300' width='300' ></video>
         <button class="btn btn-primary" onclick=' clone()' style='height:50px;width:80px;margin:auto'>capturer</button>
+        <button class="btn btn-primary" onclick='download_image()' style='height:50px;width:80px;margin:auto'>Download</button>
+
         <div id="main" style='height:300px;width:300px;margin:auto;display:inline'>
 		
                 <canvas id="cvs" height='300' width='300'></canvas>
+               
         </div>
         
 		
