@@ -1,0 +1,89 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <title>photo de profil </title> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+         function AfficherMasquer()
+        {
+        divInfo = document.getElementById('divacacher');
+
+        divInfo.style.display = 'block';
+
+        }
+
+	function init() {
+
+		navigator.mediaDevices.getUserMedia({ audio: false, video: { width: 300, height: 300 } }).then(function(mediaStream) {
+			
+			var video = document.getElementById('sourcevid');
+			video.srcObject = mediaStream;
+			
+			video.onloadedmetadata = function(e) {
+				video.play();
+			};
+		  
+		}).catch(function(err) { console.log(err.name + ": " + err.message); });
+	
+	}
+
+	function clone(){
+
+		var vid = document.getElementById('sourcevid');
+		var canvas1 = document.getElementById('cvs').getContext('2d');
+		canvas1.drawImage(vid, 0,0, 300,300);
+		var base64=document.getElementById('cvs').toDataURL("image/png");
+        var link = document.createElement('a');
+        link.href = base64;
+        link.download = "image.png";
+
+        link.click();
+
+  	//l'image au format base 64
+		document.getElementById('tar').value='';
+		document.getElementById('tar').value=base64;
+        
+	}
+    function download_image(){
+		
+		var base64=document.getElementById('cvs').toDataURL("image/png");
+        var link = document.createElement('a');
+        link.download = "my-image.png";
+        link.href = base64;
+        link.click();
+
+
+}   
+	window.onload = init;
+  
+	</script>
+	
+</head>
+
+<body>
+        <div class="container">
+          <input type="button" class="btn btn-primary" value="Photo" onClick="AfficherMasquer()" />  </div>
+         <div id="divacacher" style="display:none;">
+        <video id="sourcevid"   height='300' width='300' ></video>
+        <button class="btn btn-primary" onclick=' clone()' style='height:50px;width:80px;margin:auto'>capturer</button>
+        <div id="main" style='height:300px;width:300px;margin:auto;display:inline'>
+		
+                <canvas id="cvs" height='300' width='300'></canvas>
+        </div>
+        
+		
+		
+        </div>
+        
+
+
+
+</body>
+</html>
+ 
