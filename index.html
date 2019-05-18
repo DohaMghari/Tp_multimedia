@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<title>App</title>
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+
+	</head>
+	<body>
+			<div class="card text-center">
+					<div class="card-header">Projet multimedia    Doha M'ghari || GLSID 2 </div>
+					
+		<div class="card-body">
+			<div class="container">
+		<div id="interface1" class="container">
+		<button id="btni1" class="btn btn-success" onclick="displayInterface2()" >Photo</button>
+		<div>
+		<div id="centerdiv" class="container">
+				
+			<video id="camera"  width="200" height="224" autoplay>
+			</video>
+			<span id="countdown"></span><br />
+			<div id='container'>
+
+				<canvas id="resultat" width="200" height="224"  >
+			</canvas>
+			<div id='cadre'>
+			<div class="corner tl"></div>
+			<div class="corner tr"></div>
+			<div class="corner bl"></div>
+			<div class="corner br"></div>
+			
+			<div class="corner tc"></div>
+			<div class="corner bc"></div>
+			<div class="corner lc"></div>
+			<div class="corner rc"></div>
+			</div></div>
+			
+				<div id="opvid">
+													<h3>Capturer l'image</h3>
+									  	<button  class="btn btn-success" onclick='capture()'>Capturer</button>
+
+				</div>
+				<div id="opimg">
+									<h3>Recadrage</h3>
+
+									  	<button  class="btn btn-success" onclick="showCarre(true)">Afficher Recadrage</button><br /><br />
+
+									  	<button  class="btn btn-success" onclick='recadrage()'>Recadrage</button>
+										<br />
+					<h3>Les filters</h3>
+					<table style="margin:auto;">
+						<tr>
+							<td >Brightness</td>
+							<td ><input id="fbrightness" type="number" min="0" max="200" step="1" value="100" onchange="filtercanvas(this.id,this.value)" /></td>
+						</tr>
+						<tr>
+						<td >Contrast</td>
+							<td ><input id="fcontrast" type="number" class="input" min="0" max="200" step="1" " value="100" onchange="filtercanvas(this.id,this.value)" /></td>
+						</tr>
+						<tr>
+							<td>Saturate</td>
+							<td><input id="fsaturate" type="number" min="0" max="200" step="1" " value="100" onchange="filtercanvas(this.id,this.value)" /></td>
+						</tr>
+					</table>
+					
+					<button  class="btn btn-success" onclick=' downloadImageBase64()'>Enregistrer</button>
+
+				</div>
+				</div>
+			</div>
+			</div>
+			</div>
+
+		<script src="js/script.js" ></script>
+	</body>
+</html>
